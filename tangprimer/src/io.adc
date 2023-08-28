@@ -1,0 +1,18 @@
+set_pin_assignment	{ sys_clk }	{ LOCATION = K14; IOSTANDARD = LVCMOS33; }
+#set_pin_assignment	{ BTN_RES }	{ LOCATION = K16; IOSTANDARD = LVCMOS33; PULLTYPE = NONE; } //USR_KEY, Default: Logic high, Button pressed: Logic low
+ 
+#VGA pins
+set_pin_assignment { vga_r[0] } { LOCATION = P2; IOSTANDARD = LVCMOS33; }
+set_pin_assignment { vga_r[1] } { LOCATION = R2; IOSTANDARD = LVCMOS33; }
+set_pin_assignment { vga_r[2] } { LOCATION = N5; IOSTANDARD = LVCMOS33; }
+set_pin_assignment { vga_r[3] } { LOCATION = P5; IOSTANDARD = LVCMOS33; }
+set_pin_assignment { vga_g[0] } { LOCATION = T7; IOSTANDARD = LVCMOS33; }
+set_pin_assignment { vga_g[1] } { LOCATION = R7; IOSTANDARD = LVCMOS33; }
+set_pin_assignment { vga_g[2] } { LOCATION = M10; IOSTANDARD = LVCMOS33; }
+set_pin_assignment { vga_g[3] } { LOCATION = P11; IOSTANDARD = LVCMOS33; }
+set_pin_assignment { vga_b[0] } { LOCATION = L10; IOSTANDARD = LVCMOS33; }
+set_pin_assignment { vga_b[1] } { LOCATION = N11; IOSTANDARD = LVCMOS33; }
+set_pin_assignment { vga_b[2] } { LOCATION = P12; IOSTANDARD = LVCMOS33; }
+set_pin_assignment { vga_b[3] } { LOCATION = N12; IOSTANDARD = LVCMOS33; }
+set_pin_assignment { vga_hs   } { LOCATION = R16; IOSTANDARD = LVCMOS33; }
+set_pin_assignment { vga_vs   } { LOCATION = M12; IOSTANDARD = LVCMOS33; }

@@ -1,0 +1,22 @@
+<?xml version="1" encoding="UTF-8"?>
+<!DOCTYPE gowin-fpga-project>
+<Project>
+    <Template>FPGA</Template>
+    <Version>5</Version>
+    <Device name="GW2AR-18C" pn="GW2AR-LV18QN88C8/I7">gw2ar18c-000</Device>
+    <FileList>
+        <File path="/home/lpnm/Documents/Electronica/Sipeed/Tang_Nano_20K/RGB_to_DVI/DVITester/common/PatternGenerator.v" type="file.verilog" enable="1"/>
+        <File path="/home/lpnm/Documents/Electronica/Sipeed/Tang_Nano_20K/RGB_to_DVI/DVITester/common/RGBSigGen.v" type="file.verilog" enable="1"/>
+        <File path="src/gowin_clkdiv/gowin_clkdiv5.v" type="file.verilog" enable="1"/>
+        <File path="src/gowin_rpll/gowin_rpll.v" type="file.verilog" enable="1"/>
+        <File path="src/top.v" type="file.verilog" enable="1"/>
+        <File path="src/rgb2dvi/DVI_Constants.vhd" type="file.vhdl" enable="1"/>
+        <File path="src/rgb2dvi/OutputSERDES.vhd" type="file.vhdl" enable="1"/>
+        <File path="src/rgb2dvi/SyncAsync.vhd" type="file.vhdl" enable="1"/>
+        <File path="src/rgb2dvi/SyncAsyncReset.vhd" type="file.vhdl" enable="1"/>
+        <File path="src/rgb2dvi/TMDS_Encoder.vhd" type="file.vhdl" enable="1"/>
+        <File path="src/rgb2dvi/rgb2dvi.vhd" type="file.vhdl" enable="1"/>
+        <File path="src/DVITester.cst" type="file.cst" enable="1"/>
+        <File path="src/DVITester.sdc" type="file.sdc" enable="1"/>
+    </FileList>
+</Project>
