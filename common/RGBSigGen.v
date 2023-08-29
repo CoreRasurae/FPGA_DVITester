@@ -1,3 +1,9 @@
+// SPDX-License-Identifier: BSD-3-Clause
+/*
+ * A RGB Signal timing Generator
+ *
+ * Copyright (C) 2023 Luís Mendes
+ */
 module RGBSigGen #(
 parameter VSYNC_COUNT   = 4,
 parameter HSYNC_COUNT   = 128,
