@@ -1,9 +1,3 @@
-// SPDX-License-Identifier: BSD-3-Clause
-/*
- * A Test pattern generator
- *
- * Copyright (C) 2023 Luís Mendes
- */
 module PatternGenerator (
    input pixelClk,
    input vs,
@@ -27,35 +21,41 @@ always @(posedge pixelClk) begin
 
    if (de) begin
       //Assume a default dark gray background 
-      r <= 8'h20;
-      g <= 8'h20;
-      b <= 8'h20;
+      r = 8'h20;
+      g = 8'h20;
+      b = 8'h20;
 
       //Draw left vertical bar with Red
       if (pixelsX < 20 && (pixelsY >= 20 && pixelsY < 600-20)) begin
-         r <= 8'hff;
-         g <= 8'h00;
-         b <= 8'h00;
+         r = 8'hff;
+         g = 8'h00;
+         b = 8'h00;
       end
       //Draw right vertical bar with Green
       if (pixelsX >= 800 - 20 && (pixelsY >= 20 && pixelsY < 600-20)) begin
-         r <= 8'h00;
-         g <= 8'hff;
-         b <= 8'h00;
+         r = 8'h00;
+         g = 8'hff;
+         b = 8'h00;
       end
       //Draw top and bottom horizontal lines with Blue
       if (pixelsY < 20 || pixelsY >= 600 - 20) begin
-         r <= 8'h00;
-         g <= 8'h00;
-         b <= 8'hff;
+         r = 8'h00;
+         g = 8'h00;
+         b = 8'hff;
       end
       //Draw center box in white
       if (pixelsX >= 400 - 10 && pixelsX <= 400 + 10 &&
           pixelsY >= 300 - 10 && pixelsY <= 300 + 10) begin
-         r <= 8'hff;
-         g <= 8'hff;
-         b <= 8'hff;
-      end
+         r = 8'hff;
+         g = 8'hff;
+         b = 8'hff;
+      end         
+   end
+   else begin
+      //It is very important for VGA to work properly, otherwise it won't know when it is blanking      
+      r = 8'h00;   
+      g = 8'h00;      
+      b = 8'h00;     
    end
 end
 
