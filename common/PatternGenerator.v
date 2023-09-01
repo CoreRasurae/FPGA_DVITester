@@ -1,3 +1,9 @@
+// SPDX-License-Identifier: BSD-3-Clause
+/*
+ * A Test pattern generator
+ *
+ * Copyright (C) 2023 Luís Mendes
+ */
 module PatternGenerator (
    input pixelClk,
    input vs,
