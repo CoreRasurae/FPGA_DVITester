@@ -88,16 +88,15 @@ always @ (posedge pixelClk) begin
          end         
       end
 
-      if (counterH >= (HSYNC_COUNT_ADJ + BACK_PORCH_H_ADJ) && counterH < (HSYNC_COUNT_ADJ + BACK_PORCH_H_ADJ + PIXELS_H) &&
+      if (counterH >= (HSYNC_COUNT_ADJ + BACK_PORCH_H_ADJ - 1) && counterH < (HSYNC_COUNT_ADJ + BACK_PORCH_H_ADJ + PIXELS_H - 1) &&
           counterV >= (VSYNC_COUNT + BACK_PORCH_V) && counterV < (VSYNC_COUNT + BACK_PORCH_V + PIXELS_V))
          de <= 1'b1;
       else
          de <= 1'b0;
       
-
       if (de) begin
          //Data is valid, so lets increment the pixels counters
-         if (counterH >= (HSYNC_COUNT_ADJ + BACK_PORCH_H_ADJ) && counterH < (HSYNC_COUNT_ADJ + BACK_PORCH_H_ADJ + PIXELS_H))
+         if (counterH >= (HSYNC_COUNT_ADJ + BACK_PORCH_H_ADJ - 1) && counterH < (HSYNC_COUNT_ADJ + BACK_PORCH_H_ADJ + PIXELS_H - 1))
             pixelX <= pixelX + 1;
          else begin
             pixelX <= 0;         
