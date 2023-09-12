@@ -1,3 +1,10 @@
+// SPDX-License-Identifier: BSD-3-Clause
+/*
+ * Display HDMI/DVI test pattern on the Tang Nano 20K HDMI conector at 800x600 56Hz resolution
+ *
+ * Copyright (C) 2023 Luís Mendes
+ */
+
 module top(
   input        sys_clk, //27MHz
   input        resetn,
