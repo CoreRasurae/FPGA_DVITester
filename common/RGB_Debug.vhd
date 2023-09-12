@@ -324,6 +324,10 @@ begin
                doneColumns <= '1';
             end if;
 
+            if (countingFrmLines and not doneFrmLines) then
+               counterFrmLines <= std_logic_vector(unsigned(counterFrmLines) + x"001");
+            end if;
+
             if (countingVgaFPHEnd and not doneVgaFPHEnd and readyVgaFPHEnd) then
                doneVgaFPHEnd <= '1';
             end if;
@@ -354,10 +358,6 @@ begin
             if (readyBPH and not doneBPH) then
                countingBPH <= '1';
                counterBPH <= x"001";
-            end if;
-
-            if (countingFrmLines and not doneFrmLines) then
-               counterFrmLines <= std_logic_vector(unsigned(counterFrmLines) + x"001");
             end if;
           
             if (not countingColumns and not doneColumns) then
