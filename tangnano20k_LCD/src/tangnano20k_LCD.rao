@@ -1,0 +1,290 @@
+<?xml version="1" encoding="UTF-8"?>
+<GAO_CONFIG>
+    <Version>3.0</Version>
+    <Mode>Standard</Mode>
+    <AoCore index="0" sample_clock="pixelClk" trig_type="0" storage_depth="1024" window_num="1" capture_amount="1024" trigger_pos="0" module_name="top" force_trigger_by_falling_edge="false">
+        <SignalList>
+            <Signal>rgbDebugUnit/complete</Signal>
+            <Bus name="rgbDebugUnit/counterFrame[19:0]">
+                <Signal>rgbDebugUnit/counterFrame[19]</Signal>
+                <Signal>rgbDebugUnit/counterFrame[18]</Signal>
+                <Signal>rgbDebugUnit/counterFrame[17]</Signal>
+                <Signal>rgbDebugUnit/counterFrame[16]</Signal>
+                <Signal>rgbDebugUnit/counterFrame[15]</Signal>
+                <Signal>rgbDebugUnit/counterFrame[14]</Signal>
+                <Signal>rgbDebugUnit/counterFrame[13]</Signal>
+                <Signal>rgbDebugUnit/counterFrame[12]</Signal>
+                <Signal>rgbDebugUnit/counterFrame[11]</Signal>
+                <Signal>rgbDebugUnit/counterFrame[10]</Signal>
+                <Signal>rgbDebugUnit/counterFrame[9]</Signal>
+                <Signal>rgbDebugUnit/counterFrame[8]</Signal>
+                <Signal>rgbDebugUnit/counterFrame[7]</Signal>
+                <Signal>rgbDebugUnit/counterFrame[6]</Signal>
+                <Signal>rgbDebugUnit/counterFrame[5]</Signal>
+                <Signal>rgbDebugUnit/counterFrame[4]</Signal>
+                <Signal>rgbDebugUnit/counterFrame[3]</Signal>
+                <Signal>rgbDebugUnit/counterFrame[2]</Signal>
+                <Signal>rgbDebugUnit/counterFrame[1]</Signal>
+                <Signal>rgbDebugUnit/counterFrame[0]</Signal>
+            </Bus>
+            <Bus name="rgbDebugUnit/counterHS[11:0]">
+                <Signal>rgbDebugUnit/counterHS[11]</Signal>
+                <Signal>rgbDebugUnit/counterHS[10]</Signal>
+                <Signal>rgbDebugUnit/counterHS[9]</Signal>
+                <Signal>rgbDebugUnit/counterHS[8]</Signal>
+                <Signal>rgbDebugUnit/counterHS[7]</Signal>
+                <Signal>rgbDebugUnit/counterHS[6]</Signal>
+                <Signal>rgbDebugUnit/counterHS[5]</Signal>
+                <Signal>rgbDebugUnit/counterHS[4]</Signal>
+                <Signal>rgbDebugUnit/counterHS[3]</Signal>
+                <Signal>rgbDebugUnit/counterHS[2]</Signal>
+                <Signal>rgbDebugUnit/counterHS[1]</Signal>
+                <Signal>rgbDebugUnit/counterHS[0]</Signal>
+            </Bus>
+            <Bus name="rgbDebugUnit/counterVS[15:0]">
+                <Signal>rgbDebugUnit/counterVS[15]</Signal>
+                <Signal>rgbDebugUnit/counterVS[14]</Signal>
+                <Signal>rgbDebugUnit/counterVS[13]</Signal>
+                <Signal>rgbDebugUnit/counterVS[12]</Signal>
+                <Signal>rgbDebugUnit/counterVS[11]</Signal>
+                <Signal>rgbDebugUnit/counterVS[10]</Signal>
+                <Signal>rgbDebugUnit/counterVS[9]</Signal>
+                <Signal>rgbDebugUnit/counterVS[8]</Signal>
+                <Signal>rgbDebugUnit/counterVS[7]</Signal>
+                <Signal>rgbDebugUnit/counterVS[6]</Signal>
+                <Signal>rgbDebugUnit/counterVS[5]</Signal>
+                <Signal>rgbDebugUnit/counterVS[4]</Signal>
+                <Signal>rgbDebugUnit/counterVS[3]</Signal>
+                <Signal>rgbDebugUnit/counterVS[2]</Signal>
+                <Signal>rgbDebugUnit/counterVS[1]</Signal>
+                <Signal>rgbDebugUnit/counterVS[0]</Signal>
+            </Bus>
+            <Bus name="rgbDebugUnit/counterDE[11:0]">
+                <Signal>rgbDebugUnit/counterDE[11]</Signal>
+                <Signal>rgbDebugUnit/counterDE[10]</Signal>
+                <Signal>rgbDebugUnit/counterDE[9]</Signal>
+                <Signal>rgbDebugUnit/counterDE[8]</Signal>
+                <Signal>rgbDebugUnit/counterDE[7]</Signal>
+                <Signal>rgbDebugUnit/counterDE[6]</Signal>
+                <Signal>rgbDebugUnit/counterDE[5]</Signal>
+                <Signal>rgbDebugUnit/counterDE[4]</Signal>
+                <Signal>rgbDebugUnit/counterDE[3]</Signal>
+                <Signal>rgbDebugUnit/counterDE[2]</Signal>
+                <Signal>rgbDebugUnit/counterDE[1]</Signal>
+                <Signal>rgbDebugUnit/counterDE[0]</Signal>
+            </Bus>
+            <Bus name="rgbDebugUnit/counterLines[11:0]">
+                <Signal>rgbDebugUnit/counterLines[11]</Signal>
+                <Signal>rgbDebugUnit/counterLines[10]</Signal>
+                <Signal>rgbDebugUnit/counterLines[9]</Signal>
+                <Signal>rgbDebugUnit/counterLines[8]</Signal>
+                <Signal>rgbDebugUnit/counterLines[7]</Signal>
+                <Signal>rgbDebugUnit/counterLines[6]</Signal>
+                <Signal>rgbDebugUnit/counterLines[5]</Signal>
+                <Signal>rgbDebugUnit/counterLines[4]</Signal>
+                <Signal>rgbDebugUnit/counterLines[3]</Signal>
+                <Signal>rgbDebugUnit/counterLines[2]</Signal>
+                <Signal>rgbDebugUnit/counterLines[1]</Signal>
+                <Signal>rgbDebugUnit/counterLines[0]</Signal>
+            </Bus>
+            <Bus name="rgbDebugUnit/counterFrmLines[11:0]">
+                <Signal>rgbDebugUnit/counterFrmLines[11]</Signal>
+                <Signal>rgbDebugUnit/counterFrmLines[10]</Signal>
+                <Signal>rgbDebugUnit/counterFrmLines[9]</Signal>
+                <Signal>rgbDebugUnit/counterFrmLines[8]</Signal>
+                <Signal>rgbDebugUnit/counterFrmLines[7]</Signal>
+                <Signal>rgbDebugUnit/counterFrmLines[6]</Signal>
+                <Signal>rgbDebugUnit/counterFrmLines[5]</Signal>
+                <Signal>rgbDebugUnit/counterFrmLines[4]</Signal>
+                <Signal>rgbDebugUnit/counterFrmLines[3]</Signal>
+                <Signal>rgbDebugUnit/counterFrmLines[2]</Signal>
+                <Signal>rgbDebugUnit/counterFrmLines[1]</Signal>
+                <Signal>rgbDebugUnit/counterFrmLines[0]</Signal>
+            </Bus>
+            <Bus name="rgbDebugUnit/counterColumns[11:0]">
+                <Signal>rgbDebugUnit/counterColumns[11]</Signal>
+                <Signal>rgbDebugUnit/counterColumns[10]</Signal>
+                <Signal>rgbDebugUnit/counterColumns[9]</Signal>
+                <Signal>rgbDebugUnit/counterColumns[8]</Signal>
+                <Signal>rgbDebugUnit/counterColumns[7]</Signal>
+                <Signal>rgbDebugUnit/counterColumns[6]</Signal>
+                <Signal>rgbDebugUnit/counterColumns[5]</Signal>
+                <Signal>rgbDebugUnit/counterColumns[4]</Signal>
+                <Signal>rgbDebugUnit/counterColumns[3]</Signal>
+                <Signal>rgbDebugUnit/counterColumns[2]</Signal>
+                <Signal>rgbDebugUnit/counterColumns[1]</Signal>
+                <Signal>rgbDebugUnit/counterColumns[0]</Signal>
+            </Bus>
+            <Bus name="rgbDebugUnit/counterBPH[11:0]">
+                <Signal>rgbDebugUnit/counterBPH[11]</Signal>
+                <Signal>rgbDebugUnit/counterBPH[10]</Signal>
+                <Signal>rgbDebugUnit/counterBPH[9]</Signal>
+                <Signal>rgbDebugUnit/counterBPH[8]</Signal>
+                <Signal>rgbDebugUnit/counterBPH[7]</Signal>
+                <Signal>rgbDebugUnit/counterBPH[6]</Signal>
+                <Signal>rgbDebugUnit/counterBPH[5]</Signal>
+                <Signal>rgbDebugUnit/counterBPH[4]</Signal>
+                <Signal>rgbDebugUnit/counterBPH[3]</Signal>
+                <Signal>rgbDebugUnit/counterBPH[2]</Signal>
+                <Signal>rgbDebugUnit/counterBPH[1]</Signal>
+                <Signal>rgbDebugUnit/counterBPH[0]</Signal>
+            </Bus>
+            <Bus name="rgbDebugUnit/counterBPV[11:0]">
+                <Signal>rgbDebugUnit/counterBPV[11]</Signal>
+                <Signal>rgbDebugUnit/counterBPV[10]</Signal>
+                <Signal>rgbDebugUnit/counterBPV[9]</Signal>
+                <Signal>rgbDebugUnit/counterBPV[8]</Signal>
+                <Signal>rgbDebugUnit/counterBPV[7]</Signal>
+                <Signal>rgbDebugUnit/counterBPV[6]</Signal>
+                <Signal>rgbDebugUnit/counterBPV[5]</Signal>
+                <Signal>rgbDebugUnit/counterBPV[4]</Signal>
+                <Signal>rgbDebugUnit/counterBPV[3]</Signal>
+                <Signal>rgbDebugUnit/counterBPV[2]</Signal>
+                <Signal>rgbDebugUnit/counterBPV[1]</Signal>
+                <Signal>rgbDebugUnit/counterBPV[0]</Signal>
+            </Bus>
+            <Bus name="rgbDebugUnit/counterFPH[11:0]">
+                <Signal>rgbDebugUnit/counterFPH[11]</Signal>
+                <Signal>rgbDebugUnit/counterFPH[10]</Signal>
+                <Signal>rgbDebugUnit/counterFPH[9]</Signal>
+                <Signal>rgbDebugUnit/counterFPH[8]</Signal>
+                <Signal>rgbDebugUnit/counterFPH[7]</Signal>
+                <Signal>rgbDebugUnit/counterFPH[6]</Signal>
+                <Signal>rgbDebugUnit/counterFPH[5]</Signal>
+                <Signal>rgbDebugUnit/counterFPH[4]</Signal>
+                <Signal>rgbDebugUnit/counterFPH[3]</Signal>
+                <Signal>rgbDebugUnit/counterFPH[2]</Signal>
+                <Signal>rgbDebugUnit/counterFPH[1]</Signal>
+                <Signal>rgbDebugUnit/counterFPH[0]</Signal>
+            </Bus>
+            <Bus name="rgbDebugUnit/counterFPV[11:0]">
+                <Signal>rgbDebugUnit/counterFPV[11]</Signal>
+                <Signal>rgbDebugUnit/counterFPV[10]</Signal>
+                <Signal>rgbDebugUnit/counterFPV[9]</Signal>
+                <Signal>rgbDebugUnit/counterFPV[8]</Signal>
+                <Signal>rgbDebugUnit/counterFPV[7]</Signal>
+                <Signal>rgbDebugUnit/counterFPV[6]</Signal>
+                <Signal>rgbDebugUnit/counterFPV[5]</Signal>
+                <Signal>rgbDebugUnit/counterFPV[4]</Signal>
+                <Signal>rgbDebugUnit/counterFPV[3]</Signal>
+                <Signal>rgbDebugUnit/counterFPV[2]</Signal>
+                <Signal>rgbDebugUnit/counterFPV[1]</Signal>
+                <Signal>rgbDebugUnit/counterFPV[0]</Signal>
+            </Bus>
+            <Bus name="rgbDebugUnit/counterVgaFPV[11:0]">
+                <Signal>rgbDebugUnit/counterVgaFPV[11]</Signal>
+                <Signal>rgbDebugUnit/counterVgaFPV[10]</Signal>
+                <Signal>rgbDebugUnit/counterVgaFPV[9]</Signal>
+                <Signal>rgbDebugUnit/counterVgaFPV[8]</Signal>
+                <Signal>rgbDebugUnit/counterVgaFPV[7]</Signal>
+                <Signal>rgbDebugUnit/counterVgaFPV[6]</Signal>
+                <Signal>rgbDebugUnit/counterVgaFPV[5]</Signal>
+                <Signal>rgbDebugUnit/counterVgaFPV[4]</Signal>
+                <Signal>rgbDebugUnit/counterVgaFPV[3]</Signal>
+                <Signal>rgbDebugUnit/counterVgaFPV[2]</Signal>
+                <Signal>rgbDebugUnit/counterVgaFPV[1]</Signal>
+                <Signal>rgbDebugUnit/counterVgaFPV[0]</Signal>
+            </Bus>
+            <Bus name="rgbDebugUnit/counterVgaBPV[11:0]">
+                <Signal>rgbDebugUnit/counterVgaBPV[11]</Signal>
+                <Signal>rgbDebugUnit/counterVgaBPV[10]</Signal>
+                <Signal>rgbDebugUnit/counterVgaBPV[9]</Signal>
+                <Signal>rgbDebugUnit/counterVgaBPV[8]</Signal>
+                <Signal>rgbDebugUnit/counterVgaBPV[7]</Signal>
+                <Signal>rgbDebugUnit/counterVgaBPV[6]</Signal>
+                <Signal>rgbDebugUnit/counterVgaBPV[5]</Signal>
+                <Signal>rgbDebugUnit/counterVgaBPV[4]</Signal>
+                <Signal>rgbDebugUnit/counterVgaBPV[3]</Signal>
+                <Signal>rgbDebugUnit/counterVgaBPV[2]</Signal>
+                <Signal>rgbDebugUnit/counterVgaBPV[1]</Signal>
+                <Signal>rgbDebugUnit/counterVgaBPV[0]</Signal>
+            </Bus>
+            <Bus name="rgbDebugUnit/counterVgaBPHEnd[11:0]">
+                <Signal>rgbDebugUnit/counterVgaBPHEnd[11]</Signal>
+                <Signal>rgbDebugUnit/counterVgaBPHEnd[10]</Signal>
+                <Signal>rgbDebugUnit/counterVgaBPHEnd[9]</Signal>
+                <Signal>rgbDebugUnit/counterVgaBPHEnd[8]</Signal>
+                <Signal>rgbDebugUnit/counterVgaBPHEnd[7]</Signal>
+                <Signal>rgbDebugUnit/counterVgaBPHEnd[6]</Signal>
+                <Signal>rgbDebugUnit/counterVgaBPHEnd[5]</Signal>
+                <Signal>rgbDebugUnit/counterVgaBPHEnd[4]</Signal>
+                <Signal>rgbDebugUnit/counterVgaBPHEnd[3]</Signal>
+                <Signal>rgbDebugUnit/counterVgaBPHEnd[2]</Signal>
+                <Signal>rgbDebugUnit/counterVgaBPHEnd[1]</Signal>
+                <Signal>rgbDebugUnit/counterVgaBPHEnd[0]</Signal>
+            </Bus>
+            <Bus name="rgbDebugUnit/counterVgaFPHStart[11:0]">
+                <Signal>rgbDebugUnit/counterVgaFPHStart[11]</Signal>
+                <Signal>rgbDebugUnit/counterVgaFPHStart[10]</Signal>
+                <Signal>rgbDebugUnit/counterVgaFPHStart[9]</Signal>
+                <Signal>rgbDebugUnit/counterVgaFPHStart[8]</Signal>
+                <Signal>rgbDebugUnit/counterVgaFPHStart[7]</Signal>
+                <Signal>rgbDebugUnit/counterVgaFPHStart[6]</Signal>
+                <Signal>rgbDebugUnit/counterVgaFPHStart[5]</Signal>
+                <Signal>rgbDebugUnit/counterVgaFPHStart[4]</Signal>
+                <Signal>rgbDebugUnit/counterVgaFPHStart[3]</Signal>
+                <Signal>rgbDebugUnit/counterVgaFPHStart[2]</Signal>
+                <Signal>rgbDebugUnit/counterVgaFPHStart[1]</Signal>
+                <Signal>rgbDebugUnit/counterVgaFPHStart[0]</Signal>
+            </Bus>
+            <Bus name="rgbDebugUnit/counterVgaFPHEnd[11:0]">
+                <Signal>rgbDebugUnit/counterVgaFPHEnd[11]</Signal>
+                <Signal>rgbDebugUnit/counterVgaFPHEnd[10]</Signal>
+                <Signal>rgbDebugUnit/counterVgaFPHEnd[9]</Signal>
+                <Signal>rgbDebugUnit/counterVgaFPHEnd[8]</Signal>
+                <Signal>rgbDebugUnit/counterVgaFPHEnd[7]</Signal>
+                <Signal>rgbDebugUnit/counterVgaFPHEnd[6]</Signal>
+                <Signal>rgbDebugUnit/counterVgaFPHEnd[5]</Signal>
+                <Signal>rgbDebugUnit/counterVgaFPHEnd[4]</Signal>
+                <Signal>rgbDebugUnit/counterVgaFPHEnd[3]</Signal>
+                <Signal>rgbDebugUnit/counterVgaFPHEnd[2]</Signal>
+                <Signal>rgbDebugUnit/counterVgaFPHEnd[1]</Signal>
+                <Signal>rgbDebugUnit/counterVgaFPHEnd[0]</Signal>
+            </Bus>
+        </SignalList>
+        <Triggers>
+            <Trigger index="0">
+                <SignalList>
+                    <Signal>rgbDebugUnit/complete</Signal>
+                </SignalList>
+            </Trigger>
+            <Trigger index="1"/>
+            <Trigger index="2"/>
+            <Trigger index="3"/>
+            <Trigger index="4"/>
+            <Trigger index="5"/>
+            <Trigger index="6"/>
+            <Trigger index="7"/>
+            <Trigger index="8"/>
+            <Trigger index="9"/>
+            <Trigger index="10"/>
+            <Trigger index="11"/>
+            <Trigger index="12"/>
+            <Trigger index="13"/>
+            <Trigger index="14"/>
+            <Trigger index="15"/>
+        </Triggers>
+        <MatchUnits>
+            <MatchUnit index="0" enabled="1" match_type="1" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="1" value1="0" trigger="0"/>
+            <MatchUnit index="1" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="2" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="3" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="4" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="5" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="6" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="7" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="8" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="9" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="10" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="11" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="12" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="13" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="14" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+            <MatchUnit index="15" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
+        </MatchUnits>
+        <Expressions type="Static">
+            <Expression>M0</Expression>
+        </Expressions>
+    </AoCore>
+    <GAO_ID>1001110100101011</GAO_ID>
+</GAO_CONFIG>
