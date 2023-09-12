@@ -13,7 +13,7 @@ parameter PIXELS_V      = 600,
 parameter FRONT_PORCH_H = 32,
 parameter BACK_PORCH_H  = 128,
 parameter PIXELS_H      = 800,
-parameter CLOCK_ADJ     = 38400/38100
+parameter CLOCK_ADJ     = 38400.0/38100.0
 )
 (
    input pixelClk,
