@@ -67,9 +67,9 @@ always @ (posedge pixelClk) begin
       else if (counterV >= VSYNC_COUNT-1 && counterH == MAX_PIXELS_H - 1)
          vs <= 1'b1;
 
-      if (counterH < HSYNC_COUNT-1 || counterH == MAX_PIXELS_H - 1)
+      if (counterH < HSYNC_COUNT_ADJ-1 || counterH == MAX_PIXELS_H - 1)
          hs <= 1'b0;
-      else if (counterH >= HSYNC_COUNT-1) begin
+      else if (counterH >= HSYNC_COUNT_ADJ-1) begin
          hs <= 1'b1;
       end
                   
