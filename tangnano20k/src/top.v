@@ -1,5 +1,6 @@
 module top(
   input        sys_clk, //27MHz
+  input        resetn,
   output       tmds_clk_n,
   output       tmds_clk_p,
   output [2:0] tmds_d_n,
@@ -52,6 +53,24 @@ PatternGenerator pg (
    .r(red),
    .g(green),
    .b(blue)
+);
+
+wire reset;
+AsyncMetaReset asyncRstUnit (
+   .clk(pixelClk),
+   .rstIn(~resetn),
+   .rstOut(reset)
+);
+
+RGB_Debug #(.hasDELine(1)) rgbDebugUnit (
+   .RESET(reset),
+   .VGA_CLK(pixelClk),
+   .VGA_HS(hsync),
+   .VGA_VS(vsync),
+   .VGA_DE(dataEn),
+   .VGA_R(red),
+   .VGA_G(green),
+   .VGA_B(blue)
 );
 
 rgb2dvi myDVI (
