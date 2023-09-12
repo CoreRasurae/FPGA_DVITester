@@ -33,9 +33,10 @@ initial hs = 1'b1;
 initial pixelX = 10'h000;
 initial pixelY = 10'h000;
 
-localparam FRONT_PORCH_H_ADJ = $floor(FRONT_PORCH_H * CLOCK_ADJ);
-localparam BACK_PORCH_H_ADJ  = $floor(BACK_PORCH_H * CLOCK_ADJ);
-localparam HSYNC_COUNT_ADJ   = $floor(HSYNC_COUNT * CLOCK_ADJ);
+//Compute ajdusted values due to clock deviation to the desired video pixel clock and include rounding and 0 value protection
+localparam FRONT_PORCH_H_ADJ = $floor(FRONT_PORCH_H * CLOCK_ADJ + 0.5) <= 0 ? 1 : $floor(FRONT_PORCH_H * CLOCK_ADJ + 0.5);
+localparam BACK_PORCH_H_ADJ  = $floor(BACK_PORCH_H * CLOCK_ADJ + 0.5) <= 0 ? 1 : $floor(BACK_PORCH_H * CLOCK_ADJ + 0.5);
+localparam HSYNC_COUNT_ADJ   = $floor(HSYNC_COUNT * CLOCK_ADJ + 0.5) <= 0 ? 1 : $floor(HSYNC_COUNT * CLOCK_ADJ + 0.5);
 
 localparam MAX_PIXELS_H = HSYNC_COUNT_ADJ + BACK_PORCH_H_ADJ + PIXELS_H + FRONT_PORCH_H_ADJ;
 localparam MAX_PIXELS_V = VSYNC_COUNT + BACK_PORCH_V + PIXELS_V + FRONT_PORCH_V;
