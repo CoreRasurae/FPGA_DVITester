@@ -35,22 +35,116 @@ use ieee.numeric_std.all;
 
 entity RGB_Debug is
   generic (
-    HasDELine  : boolean := true
+    HasDELine  : boolean := true;
+    CLKFreq : integer := 27000000
   );
   port (
-    RESET      : in std_logic;
-    VGA_CLK    : in std_logic;
-    VGA_HS     : in std_logic;             -- Active low
-    VGA_VS     : in std_logic;             -- Active low
-    VGA_DE     : in std_logic;
-    VGA_R      : in unsigned(7 downto 0);
-    VGA_G      : in unsigned(7 downto 0);
-    VGA_B      : in unsigned(7 downto 0)
+    CLK          : in std_logic;
+    serialError_n: out std_logic;
+    uart_rx_act_n: out std_logic;
+    uart_tx_act_n: out std_logic;
+    uart_rx_i    : in std_logic;
+    uart_tx_o    : out std_logic;
+    VGA_CLK      : in std_logic;
+    VGA_HS       : in std_logic;             -- Active low
+    VGA_VS       : in std_logic;             -- Active low
+    VGA_DE       : in std_logic;
+    VGA_R        : in unsigned(7 downto 0);
+    VGA_G        : in unsigned(7 downto 0);
+    VGA_B        : in unsigned(7 downto 0)
     );
   
 end RGB_Debug;
 
 architecture rtl of RGB_Debug is
+    constant c_CLKS_PER_BIT : integer := CLKFreq / 1500000;
+ 
+    component hexDecoderUnit is
+        port (clk: in std_logic;
+            nibbleChar: in std_logic_vector(7 downto 0); 
+            nibble: out std_logic_vector(3 downto 0);
+            error: out std_logic
+        );
+    end component hexDecoderUnit;
+  
+    component uart_rx is
+        generic ( CLKS_PER_BIT : integer );
+        port (
+            i_Clock: in std_logic;
+            i_Rx_Serial: in std_logic;
+            o_Rx_DV: out std_logic;
+            o_Rx_Active: out std_logic;
+            o_Rx_Byte: out std_logic_vector(7 downto 0)
+        );
+    end component uart_rx;
+
+    component uart_tx is
+        generic ( CLKS_PER_BIT : integer );
+        port (
+            i_Clock: in std_logic;
+            i_Tx_DV: in std_logic;
+            i_Tx_Byte: in std_logic_vector(7 downto 0);
+            o_Tx_Active: out std_logic;
+            o_Tx_Serial: out std_logic;
+            o_Tx_Done: out std_logic
+        );
+    end component uart_tx; 
+
+    component RGBInfoProtocol is
+        generic ( CLKFreq : real := 27000000.0; CommsTimeout : integer := 10; ErrorDelay : integer := 2000);
+        port (
+            clk : in std_logic;
+            dataValidRxStrobe : in std_logic;
+            dataRx : in std_logic_vector(7 downto 0); 
+            dataToTx : out std_logic_vector(7 downto 0);
+            dataTxStart : out std_logic;
+            dataTxActive : in std_logic;
+            dataTxDone : in std_logic;
+            decodedNibble : in std_logic_vector(3 downto 0);
+            nibbleError : in std_logic; 
+            serialError : out std_logic;
+            reset : out std_logic;
+            complete : in std_logic;
+            hasDE : in std_logic;
+            counterFrame : in std_logic_vector(19 downto 0);
+            counterHS : in std_logic_vector(11 downto 0);
+            counterVS : in std_logic_vector(15 downto 0);
+            counterDE : in std_logic_vector(11 downto 0);
+            counterLines : in std_logic_vector(11 downto 0);
+            counterFrameLines : in std_logic_vector(11 downto 0);
+            counterColumns : in std_logic_vector(11 downto 0);
+            counterBPH : in std_logic_vector(11 downto 0);
+            counterBPV : in std_logic_vector(11 downto 0);
+            counterFPH : in std_logic_vector(11 downto 0);
+            counterFPV : in std_logic_vector(11 downto 0);
+            counterVgaFPV : in std_logic_vector(11 downto 0);
+            counterVgaBPV : in std_logic_vector(11 downto 0);
+            counterVgaBPHEnd : in std_logic_vector(11 downto 0);
+            counterVgaFPHStart : in std_logic_vector(11 downto 0);
+            counterVgaFPHEnd : in std_logic_vector(11 downto 0)
+        );
+    end component RGBInfoProtocol;
+    
+    signal reset : std_logic := '0';
+    signal serialError : std_logic;
+    signal hasDE : std_logic;
+    signal completeInternal : std_logic;
+    signal completeMeta : std_logic;
+    signal resetInternal : std_logic;
+    signal resetSerial : std_logic;
+
+    --Serial protocol signals
+    signal rx_dataByte: std_logic_vector(7 downto 0);
+    signal tx_dataByte: std_logic_vector(7 downto 0);
+    signal decodedNibble: std_logic_vector(3 downto 0);
+    signal decodeError: std_logic;
+    signal rx_dataValid: std_logic;
+    signal rx_active: std_logic;
+    signal tx_dataValid: std_logic;
+    signal tx_active: std_logic;
+    signal tx_done: std_logic;
+
+    --VGA/RGB signal flags
     signal last_hs     : std_logic := '0';
     signal last_vs     : std_logic := '0';
     signal last_de     : std_logic := '0';
@@ -141,6 +235,14 @@ architecture rtl of RGB_Debug is
     signal partialCounterVgaBPHEnd : std_logic_vector(11 downto 0);
     signal partialCounterVgaFPHStart : std_logic_vector(11 downto 0);
 begin
+
+hasDEStateEnabled : if hasDELine = true generate
+    hasDE <= '1';
+end generate hasDEStateEnabled;
+hasDEStateDisabled : if hasDELine = false generate
+    hasDE <= '0';
+end generate hasDEStateDisabled;
+
 
 dataValid <= VGA_R(7) or VGA_R(6) or VGA_R(5) or VGA_R(4) or VGA_R(3) or VGA_R(2) or VGA_R(1) or VGA_R(0) or
              VGA_G(7) or VGA_G(6) or VGA_G(5) or VGA_G(4) or VGA_G(3) or VGA_G(2) or VGA_G(1) or VGA_G(0) or
@@ -497,4 +599,79 @@ Has_DE_Line_complete_false : if HasDELine = false generate
    complete <= doneFrame and doneVS and doneHS and doneFrmLines and doneVgaFPHStart and doneVgaFPHEnd and doneVgaBPHEnd and doneVgaBPV and doneVgaFPV;
 end generate Has_DE_Line_complete_false;
 
+process(VGA_CLK)
+begin
+   reset <= resetInternal;
+   resetInternal <= resetSerial;
+end process;
+
+process(clk)
+begin
+   completeInternal <= complete;
+   completeMeta <= completeInternal;
+end process;
+
+
+  nibbleDec : hexDecoderUnit port map (
+     clk => clk,
+     nibbleChar => rx_dataByte,
+     nibble => decodedNibble,
+     error => decodeError
+  );
+
+  UART_RX_INST : uart_rx generic map (CLKS_PER_BIT => c_CLKS_PER_BIT)
+  port map (
+     i_Clock => clk,
+     i_Rx_Serial => uart_rx_i,
+     o_Rx_DV => rx_dataValid,
+     o_Rx_Active => rx_active,
+     o_Rx_Byte => rx_dataByte
+  );
+
+  UART_TX_INST : uart_tx generic map (CLKS_PER_BIT => c_CLKS_PER_BIT) 
+  port map (
+     i_Clock => clk,
+     i_Tx_DV => tx_dataValid,
+     i_Tx_Byte => tx_dataByte,
+     o_Tx_Active => tx_active,
+     o_Tx_Serial => uart_tx_o,
+     o_Tx_Done => tx_done
+  );
+
+  rgbInfoInst : RGBInfoProtocol
+  port map (
+        clk => CLK,
+        dataValidRxStrobe => rx_dataValid,
+        dataRx => rx_dataByte,
+        dataToTx => tx_dataByte,
+        dataTxStart => tx_dataValid,
+        dataTxActive => tx_active,
+        dataTxDone => tx_done,
+        decodedNibble => decodedNibble,
+        nibbleError => decodeError,
+        serialError => serialError,
+        reset => resetSerial,
+        complete => completeMeta,
+        hasDE => hasDE,
+        counterFrame => counterFrame,
+        counterHS => counterHS,
+        counterVS => counterVS,
+        counterDE => counterDE,
+        counterLines => counterLines,
+        counterFrameLines => counterFrmLines,
+        counterColumns => counterColumns,
+        counterBPH => counterBPH,
+        counterBPV => counterBPV,
+        counterFPH => counterFPH,
+        counterFPV => counterFPV,
+        counterVgaFPV => counterVgaFPV,
+        counterVgaBPV => counterVgaBPV,
+        counterVgaBPHEnd => counterVgaBPHEnd,
+        counterVgaFPHStart => counterVgaFPHStart,
+        counterVgaFPHEnd => counterVgaFPHEnd
+  );
+
+  serialError_n <= not serialError;
+  uart_rx_act_n <= not rx_active;
+  uart_tx_act_n <= not tx_active;
 end rtl;

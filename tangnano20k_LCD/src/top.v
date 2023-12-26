@@ -7,6 +7,9 @@
 module top(
   input        sys_clk, //27MHz
   input        resetn,
+  input        uart_rx_i,
+  output       uart_tx_o,
+  output [4:0] leds,
   output       LCD_CLK,
   output       LCD_HS,
   output       LCD_VS,
@@ -78,8 +81,15 @@ AsyncMetaReset asyncRstUnit (
    .rstOut(reset)
 );
 
+assign leds[4] = 1'b0;
+
 RGB_Debug #(.hasDELine(1)) rgbDebugUnit (
-   .RESET(reset),
+   .CLK(sys_clk),
+   .serialError_n(leds[3]),
+   .uart_rx_act_n(leds[1]),
+   .uart_tx_act_n(leds[0]),
+   .uart_rx_i(uart_rx_i),
+   .uart_tx_o(uart_tx_o),
    .VGA_CLK(pixelClk),
    .VGA_HS(hsync),
    .VGA_VS(vsync),
@@ -88,7 +98,6 @@ RGB_Debug #(.hasDELine(1)) rgbDebugUnit (
    .VGA_G(green),
    .VGA_B(blue)
 );
-
 
 assign LCD_CLK = pixelClk;
 assign LCD_HS = hsync;

@@ -1,3 +1,9 @@
+// SPDX-License-Identifier: BSD-3-Clause
+/*
+ * RGBInfoProtocol - A serial protocol to execute video timing measurements and report back with the measurement data
+ *
+ * Copyright (C) 2023 Luís Mendes <luis.p.mendes@gmail.com>
+ */
 module RGBInfoProtocol #(parameter CLKFreq=27000000.0, parameter CommsTimeout = 10, parameter ErrorDelay = 2000) //Timeout and delay in ms
 (clk, dataValidRxStrobe, dataRx, dataToTx, dataTxStart, dataTxActive, dataTxDone, decodedNibble, nibbleError, 
  serialError,
