@@ -105,7 +105,7 @@ class RGBSerialInfoClient():
          print('.')
          
       if hasDE == 1:
-         print('Image pixels per line with pixel DataEnable signal active: {:d} scanlines'.format(parameters['DElines']))
+         print('Image pixels per line with pixel DataEnable signal active: {:d} pixel clock cycles/pixels'.format(parameters['DElines']))
       
          print('Image pixel lines: {:d} scanlines'.format(parameters['ImgLines']))
       print('Total frame lines: {:d} scanlines'.format(parameters['FrameLines']))   
@@ -201,9 +201,8 @@ def read(clkFrequency = None):
    client.interpretParameters(videoParameters, clkFrequency)
   
 def measureAndRead(clkFrequency = None):
-   client = RGBSerialInfoClient(serialPort='/dev/ttyUSB1')
-   client.setDebugTransfers(True)
-   print('Test passed!')
+   measure()
+   read(clkFrequency)
 
 if __name__ == "__main__":
    parser = argparse.ArgumentParser()
